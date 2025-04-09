@@ -57,7 +57,7 @@ public class CallbackTest {
         form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79012345678");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector("button")).click();
-        WebElement resultInvalidName = driver.findElement(By.cssSelector(".input_invalid .input__sub"));
+        WebElement resultInvalidName = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub"));
         assertTrue(resultInvalidName.isDisplayed());
         assertEquals("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.", resultInvalidName.getText().trim());
     }
@@ -69,7 +69,7 @@ public class CallbackTest {
         form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79012345678");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector("button")).click();
-        WebElement resultInvalidName = driver.findElement(By.cssSelector(".input_invalid .input__sub"));
+        WebElement resultInvalidName = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub"));
         assertTrue(resultInvalidName.isDisplayed());
         assertEquals("Поле обязательно для заполнения", resultInvalidName.getText().trim());
     }
@@ -81,7 +81,7 @@ public class CallbackTest {
         form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+7901234567");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector("button")).click();
-        WebElement resultInvalidName = driver.findElement(By.cssSelector(".input_invalid .input__sub"));
+        WebElement resultInvalidName = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub"));
         assertTrue(resultInvalidName.isDisplayed());
         assertEquals("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.", resultInvalidName.getText().trim());
     }
@@ -93,7 +93,7 @@ public class CallbackTest {
         form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("");
         form.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         form.findElement(By.cssSelector("button")).click();
-        WebElement resultInvalidName = driver.findElement(By.cssSelector(".input_invalid .input__sub"));
+        WebElement resultInvalidName = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub"));
         assertTrue(resultInvalidName.isDisplayed());
         assertEquals("Поле обязательно для заполнения", resultInvalidName.getText().trim());
     }
@@ -104,11 +104,10 @@ public class CallbackTest {
         form.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван");
         form.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79012345678");
         form.findElement(By.cssSelector("button")).click();
-        WebElement resultInvalidName = driver.findElement(By.cssSelector(".input_invalid"));
+        WebElement resultInvalidName = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid"));
         assertTrue(resultInvalidName.isDisplayed());
         assertEquals("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй", resultInvalidName.getText().trim());
     }
-
 
 
 }
